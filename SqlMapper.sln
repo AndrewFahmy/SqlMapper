@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6F388323-B62E-45B6-8CB9-E3A66924B96B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83773C43-2DDE-4DA6-9A7A-5D47238BA261}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SqlMapper", "src\SqlMapper\SqlMapper.xproj", "{C42F2584-9DC5-4874-95CE-8D057EA0E169}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{06F4C82A-762D-421A-9807-DE3235534ED2}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SqlMapper.Tests", "SqlMapper.Tests\SqlMapper.Tests.xproj", "{FB6E08E7-EBDF-4637-B54E-205BE39DEDD2}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SqlMapper.Common", "src\SqlMapper.Common\SqlMapper.Common.xproj", "{2031F425-0A97-4228-92F3-7ED87A892AA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C42F2584-9DC5-4874-95CE-8D057EA0E169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42F2584-9DC5-4874-95CE-8D057EA0E169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42F2584-9DC5-4874-95CE-8D057EA0E169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42F2584-9DC5-4874-95CE-8D057EA0E169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6E08E7-EBDF-4637-B54E-205BE39DEDD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6E08E7-EBDF-4637-B54E-205BE39DEDD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6E08E7-EBDF-4637-B54E-205BE39DEDD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6E08E7-EBDF-4637-B54E-205BE39DEDD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2031F425-0A97-4228-92F3-7ED87A892AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2031F425-0A97-4228-92F3-7ED87A892AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2031F425-0A97-4228-92F3-7ED87A892AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2031F425-0A97-4228-92F3-7ED87A892AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C42F2584-9DC5-4874-95CE-8D057EA0E169} = {6F388323-B62E-45B6-8CB9-E3A66924B96B}
+		{FB6E08E7-EBDF-4637-B54E-205BE39DEDD2} = {06F4C82A-762D-421A-9807-DE3235534ED2}
+		{2031F425-0A97-4228-92F3-7ED87A892AA6} = {6F388323-B62E-45B6-8CB9-E3A66924B96B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://andrewfahmy.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = src\\SqlMapper\\SqlMapper.xproj
+		SccProjectTopLevelParentUniqueName1 = SqlMapper.sln
+		SccProjectName1 = src/SqlMapper
+		SccLocalPath1 = src\\SqlMapper
+		SccProjectUniqueName2 = SqlMapper.Tests\\SqlMapper.Tests.xproj
+		SccProjectTopLevelParentUniqueName2 = SqlMapper.sln
+		SccProjectName2 = SqlMapper.Tests
+		SccLocalPath2 = SqlMapper.Tests
+		SccProjectUniqueName3 = src\\SqlMapper.Common\\SqlMapper.Common.xproj
+		SccProjectTopLevelParentUniqueName3 = SqlMapper.sln
+		SccProjectName3 = src/SqlMapper.Common
+		SccLocalPath3 = src\\SqlMapper.Common
+	EndGlobalSection
+EndGlobal
