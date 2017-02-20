@@ -14,4 +14,4 @@ var parameter = new CommandParameter("Parameter_Name", Parameter_Vale, Parameter
  * Parameter Name:           string - Name of the parameter
  * Parameter Value:          object - It's value
  * Parameter Direction:      ParameterDirection - An enum representaion for the direction of the parameter like Input or
-                                                  Output
+                                                  Output (the default value is Input)
