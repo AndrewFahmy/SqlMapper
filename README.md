@@ -1,7 +1,5 @@
 ###SQL Mapper
 ####A relational object(s) mapper
-***
-
 
 ##How To Use
 * [Creating a Context](https://github.com/AndrewFahmy/SqlMapper/tree/master/docs/context.md)
