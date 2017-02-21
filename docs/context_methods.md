@@ -8,7 +8,7 @@ The context class has some general methods. Those methods are:
 
 
 ##GetData Method
-As it's name implies the `GetData` method fetches data and return's row by row in the form of `CommandResult` class (Please see [The Command Result Class](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/command_result.md) for more clarification).
+As it's name implies the `GetData` method fetches data and returns row by row in the form of `CommandResult` class (Please see [The Command Result Class](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/command_result.md) for more clarification).
 
 Example:
 ```
