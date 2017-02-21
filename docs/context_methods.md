@@ -4,7 +4,7 @@ The context class has some general methods. Those methods are:
  1. GetData
  2. GetScalar
  3. CommitChanges
- 4. Rollback Changes
+ 4. RollbackChanges
 
 
 ##GetData Method
