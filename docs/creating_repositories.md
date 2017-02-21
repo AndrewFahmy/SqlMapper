@@ -1,7 +1,7 @@
 
 #Adding Repositories
 
-Usually a repository represent a table structure from the database. But in this mapper the repository is more a representation of the expected result from executing a query. To create a repository first w need to create it's **Plain Old CLR Object (POCO)** class. In the example below I'll use a simple user structure to clarify.
+Usually a repository represent a table structure from the database. To create a repository first w need to create it's **Plain Old CLR Object (POCO)** class. In the example below I'll use a simple user structure to clarify.
 
 Example:
 ```
