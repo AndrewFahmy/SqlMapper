@@ -7,7 +7,7 @@ The parameter class is used to pass parameters to and from the mapper. It's decl
 Example:
 
 ```
-var parameter = new CommandParameter("Parameter_Name", Parameter_Vale, Parameter_Direction);
+var parameter = new CommandParameter("Parameter_Name", Parameter_Value, Parameter_Direction);
 ```
 
 ##Constructor Parameters
