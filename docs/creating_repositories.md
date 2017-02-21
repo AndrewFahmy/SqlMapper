@@ -1,7 +1,7 @@
 
 #Adding Repositories
 
-Usually a repository represent a table structure from the database. To create a repository first w need to create it's **Plain Old CLR Object (POCO)** class. In the example below I'll use a simple user structure to clarify.
+Usually a repository represent a table structure from the database. To create a repository first we need to create it's [Plain Old CLR Object (POCO)](https://en.wikipedia.org/wiki/Plain_old_CLR_object) class. In the example below I'll use a simple user structure to clarify.
 
 Example:
 ```
