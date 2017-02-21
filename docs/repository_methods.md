@@ -48,7 +48,7 @@ var data = ctx.Users.GetSingle("Query_Or_ProcName", Command_Type,
 ```
 
 ##Search Method
-This method is the same as `GetSingle` method but returnes multiple rows after mapping them to a list of the provided model.
+This method is the same as `GetSingle` method but returns multiple rows after mapping them to a list of the provided model.
 
 Example:
 ```
