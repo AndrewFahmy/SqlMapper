@@ -17,7 +17,7 @@ public class User
 }
 ```
 
-To declare this `User` class in our context class. Please see [Creating a Context](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/context.md) first for further understanding
+To declare this `User` class in our context class.
 
 ```
 public class Context : ContextBase<SqlConnection>
@@ -30,5 +30,6 @@ public class Context : ContextBase<SqlConnection>
     public IRepository<User> Users { get; set; }
 }
 ```
+Please view [Creating a Context](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/context.md) for further understanding.
 
-And that's it now you can use this repository in your application. To See all available repository methods to use please see [Repository Level Methods](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/repository_methods.md)
+To See all available repository methods to use please see [Repository Level Methods](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/repository_methods.md)
