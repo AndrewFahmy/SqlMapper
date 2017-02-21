@@ -1,7 +1,12 @@
-###SQL Mapper
-####A relational object(s) mapper
+#About
+SQLMapper is a relational mapper that maps retrieved data from a database to business objects.
 
-##How To Use
+###Install Package
+```
+nuget install SqlMapper
+```
+
+##Get Started
 * [Creating a Context](https://github.com/AndrewFahmy/SqlMapper/tree/master/docs/context.md)
 * [Adding Repositories] (https://github.com/AndrewFahmy/SqlMapper/tree/master/docs/creating_repositories.md)
 * [Attributes](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/mapping_attribute.md)
