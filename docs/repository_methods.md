@@ -10,7 +10,7 @@ Repositories have more specific methods than [Context Level Methods](https://git
 **Note**: I'll use the `Users` repository we created [before](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/creating_repositories.md) in all future examples.
 
 ##Save Method
-This method is the combination between **Create** and **Update** methods and chooses one of them depending on the model primary key. 
+Used to save data into database whether **Insert** or **Update**. 
 
 Example:
 ```
