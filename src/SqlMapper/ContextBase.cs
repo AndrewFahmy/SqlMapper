@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using SqlMapper.Common.Abstracts;
 using SqlMapper.Common.Models;
+using SqlMapper.Extensions;
 
 namespace SqlMapper
 {
@@ -33,6 +34,8 @@ namespace SqlMapper
             foreach (var prop in properties)
             {
                 var underlyingType = prop.PropertyType.GetTypeInfo().GetGenericArguments()[0];
+
+               underlyingType.CacheType();
 
                 prop.GetSetMethod()?.Invoke(this, new[] { Activator.CreateInstance(typeof(Repository<>).MakeGenericType(underlyingType), _unitofWork, _conFactory) });
             }

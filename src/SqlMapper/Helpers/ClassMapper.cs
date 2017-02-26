@@ -31,7 +31,7 @@ namespace SqlMapper.Helpers
             foreach (var property in properties)
                 property.Mapper.Map(obj, data, property, entryPoint);
 
-            propData.SetPropertyValue(model, obj);
+            propData.PropertyInfo.SetMethod.Invoke(model, new[] { obj });
         }
 
         public void MapForList<T, TMapper>(T classInstance, CommandResult data, Property propData, IMapperMain<TMapper> entryPoint)

@@ -49,6 +49,12 @@ namespace SqlMapper.Helpers
         {
             if (val is DBNull) return;
 
+            if (prop.UnderlyingType == typeof(TVal))
+            {
+                prop.PropertyInfo.SetMethod.Invoke(model, new object[] { val });
+                return;
+            }
+
             var convInstance = val as IConvertible;
 
             if (convInstance != null)

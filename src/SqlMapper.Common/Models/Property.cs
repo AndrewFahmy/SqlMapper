@@ -27,5 +27,7 @@ namespace SqlMapper.Common.Models
         public Property GroupingProperty { get; set; }
 
         public Property PrimaryKeyProperty { get; set; }
+
+        public MappingAttribute AttributeData { get; set; }
     }
 }
