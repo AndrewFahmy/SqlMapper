@@ -14,6 +14,18 @@ public class User
     public string FirstName { get; set; }
 
     public string LastName { get; set; }
+    
+    public List<LoginHistory> LoginHistory { get; set; }
+}
+```
+
+and the `LoginHistory` class declaration is
+```
+public class LoginHistory
+{
+    public string BrowserInfo { get; set; }
+    
+    public DateTime LoginDate { get; set; }
 }
 ```
 
