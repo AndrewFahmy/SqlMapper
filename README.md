@@ -1,3 +1,5 @@
+[![NuGet](https://img.shields.io/nuget/v/SqlMapper.svg)]()
+
 #About
 SQLMapper is a relational mapper that maps retrieved data from a database to business objects.
 
