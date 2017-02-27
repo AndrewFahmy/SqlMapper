@@ -52,8 +52,7 @@ namespace SqlMapper.Common
                             {
                                 var columnName = reader.GetName(i);
 
-                                if (!result.Columns.ContainsKey(columnName))
-                                    result.Columns.Add(columnName, reader[i]);
+                                result.Columns.Add(columnName, reader[i]);
                             }
 
                             yield return result;
@@ -78,8 +77,6 @@ namespace SqlMapper.Common
 
                 cmd.AttachParameters(model);
 
-                con.Close();
-
                 var res = cmd.ExecuteNonQuery() > 0;
 
                 con.Close();
@@ -100,8 +97,6 @@ namespace SqlMapper.Common
                 cmd.CommandType = cmdType;
 
                 cmd.AttachParameters(parameters);
-
-                con.Close();
 
                 var res = cmd.ExecuteNonQuery() > 0;
 
@@ -124,9 +119,11 @@ namespace SqlMapper.Common
 
                 cmd.AttachParameters(parameters);
 
+                var res = (T)cmd.ExecuteScalar();
+
                 con.Close();
 
-                return (T)cmd.ExecuteScalar();
+                return res;
             }
         }
     }
