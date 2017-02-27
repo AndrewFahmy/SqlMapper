@@ -80,7 +80,11 @@ namespace SqlMapper.Common
 
                 con.Close();
 
-                return cmd.ExecuteNonQuery() > 0;
+                var res = cmd.ExecuteNonQuery() > 0;
+
+                con.Close();
+
+                return res;
             }
         }
 
@@ -99,7 +103,11 @@ namespace SqlMapper.Common
 
                 con.Close();
 
-                return cmd.ExecuteNonQuery() > 0;
+                var res = cmd.ExecuteNonQuery() > 0;
+
+                con.Close();
+
+                return res;
             }
         }
 
