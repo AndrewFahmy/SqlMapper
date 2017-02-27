@@ -9,32 +9,24 @@ namespace SqlMapper.Common
 {
     internal class InternalCommand : IDisposable
     {
-        private UnitofWork _unitofWork;
         private ConnectionFactory _conFactory;
 
-        internal InternalCommand(UnitofWork unitofWork, ConnectionFactory confFactory)
+        internal InternalCommand(ConnectionFactory confFactory)
         {
-            _unitofWork = unitofWork;
             _conFactory = confFactory;
         }
 
         public void Dispose()
         {
-            _unitofWork = null;
             _conFactory = null;
         }
 
         internal IEnumerable<CommandResult> ExecMapperCommand(string query, CommandType cmdType, params CommandParameter[] parameters)
         {
-            var con = _unitofWork.UseTransaction
-                ? _unitofWork.TransactionInstance.Connection
-                : _conFactory.CreateInstance();
+            var con = _conFactory.CreateInstance();
 
             using (var cmd = CommandFactory.Instance.CreateInstance(con))
             {
-                if (_unitofWork.UseTransaction)
-                    cmd.Transaction = _unitofWork.TransactionInstance;
-
                 con.CheckConnectionState();
 
                 cmd.CommandText = query;
@@ -69,22 +61,16 @@ namespace SqlMapper.Common
                     } while (reader.NextResult());
                 }
 
-                if (!_unitofWork.UseTransaction)
-                    con.Dispose();
+                con.Close();
             }
         }
 
         internal bool ExecCommand<T>(string query, CommandType cmdType, T model)
         {
-            var con = _unitofWork.UseTransaction
-                ? _unitofWork.TransactionInstance.Connection
-                : _conFactory.CreateInstance();
+            var con = _conFactory.CreateInstance();
 
             using (var cmd = CommandFactory.Instance.CreateInstance(con))
             {
-                if (_unitofWork.UseTransaction)
-                    cmd.Transaction = _unitofWork.TransactionInstance;
-
                 con.CheckConnectionState();
 
                 cmd.CommandText = query;
@@ -92,27 +78,26 @@ namespace SqlMapper.Common
 
                 cmd.AttachParameters(model);
 
+                con.Close();
+
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
 
         internal bool ExecCommand(string query, CommandType cmdType, params CommandParameter[] parameters)
         {
-            var con = _unitofWork.UseTransaction
-                ? _unitofWork.TransactionInstance.Connection
-                : _conFactory.CreateInstance();
+            var con = _conFactory.CreateInstance();
 
             using (var cmd = CommandFactory.Instance.CreateInstance(con))
             {
-                if (_unitofWork.UseTransaction)
-                    cmd.Transaction = _unitofWork.TransactionInstance;
-
                 con.CheckConnectionState();
 
                 cmd.CommandText = query;
                 cmd.CommandType = cmdType;
 
                 cmd.AttachParameters(parameters);
+
+                con.Close();
 
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -120,7 +105,8 @@ namespace SqlMapper.Common
 
         internal T ExecScalarCommand<T>(string query, CommandType cmdType, params CommandParameter[] parameters)
         {
-            using (var con = _conFactory.CreateInstance())
+            var con = _conFactory.CreateInstance();
+
             using (var cmd = CommandFactory.Instance.CreateInstance(con))
             {
                 con.CheckConnectionState();
@@ -130,7 +116,9 @@ namespace SqlMapper.Common
 
                 cmd.AttachParameters(parameters);
 
-                return (T) cmd.ExecuteScalar();
+                con.Close();
+
+                return (T)cmd.ExecuteScalar();
             }
         }
     }

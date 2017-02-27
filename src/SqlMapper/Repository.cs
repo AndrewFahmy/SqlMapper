@@ -12,26 +12,32 @@ namespace SqlMapper
 {
     internal class Repository<T> : IRepository<T>
     {
-        private readonly UnitofWork _unitofWork;
         private readonly ConnectionFactory _conFactory;
 
-        public Repository(UnitofWork unitofWork, ConnectionFactory conFactory)
+        public Repository(ConnectionFactory conFactory)
         {
-            _unitofWork = unitofWork;
             _conFactory = conFactory;
         }
 
         public bool Save(string query, CommandType type, T model)
         {
-            using (var internalCmd = new InternalCommand(_unitofWork, _conFactory))
+            using (var internalCmd = new InternalCommand(_conFactory))
             {
                 return internalCmd.ExecCommand(query, type, model);
             }
         }
 
+        public bool Save(string query, CommandType type, params CommandParameter[] parameters)
+        {
+            using (var internalCmd = new InternalCommand(_conFactory))
+            {
+                return internalCmd.ExecCommand(query, type, parameters);
+            }
+        }
+
         public bool Delete(string query, CommandType type, params CommandParameter[] parameters)
         {
-            using (var internalCmd = new InternalCommand(_unitofWork, _conFactory))
+            using (var internalCmd = new InternalCommand(_conFactory))
             {
                 return internalCmd.ExecCommand(query, type, parameters);
             }
@@ -43,7 +49,7 @@ namespace SqlMapper
 
             var modelProperties = typeof(T).GetTypeProperties(ExcludeTypes.Select);
 
-            using (var internalCmd = new InternalCommand(_unitofWork, _conFactory))
+            using (var internalCmd = new InternalCommand(_conFactory))
             {
                 foreach (var result in internalCmd.ExecMapperCommand(query, type, parameters))
                 {
@@ -63,7 +69,7 @@ namespace SqlMapper
 
             var instance = Activator.CreateInstance<T>();
 
-            using (var internalCmd = new InternalCommand(_unitofWork, _conFactory))
+            using (var internalCmd = new InternalCommand(_conFactory))
             {
                 foreach (var result in internalCmd.ExecMapperCommand(query, type, parameters))
                     mapperMain.Map(result, instance, modelProperties);

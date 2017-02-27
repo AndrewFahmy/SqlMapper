@@ -15,12 +15,10 @@ namespace SqlMapper
 {
     public class ContextBase<T> where T : DbConnection
     {
-        private readonly UnitofWork _unitofWork;
         private readonly ConnectionFactory _conFactory;
 
         protected ContextBase(string connectionString)
         {
-            _unitofWork = new UnitofWork();
             _conFactory = new ConnectionFactory(connectionString, typeof(T));
             InitializeObjectProperties();
         }
@@ -37,7 +35,7 @@ namespace SqlMapper
 
                underlyingType.CacheType();
 
-                prop.GetSetMethod()?.Invoke(this, new[] { Activator.CreateInstance(typeof(Repository<>).MakeGenericType(underlyingType), _unitofWork, _conFactory) });
+                prop.GetSetMethod()?.Invoke(this, new[] { Activator.CreateInstance(typeof(Repository<>).MakeGenericType(underlyingType), _conFactory) });
             }
         }
 
@@ -51,7 +49,7 @@ namespace SqlMapper
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public IEnumerable<CommandResult> GetData(string query, CommandType type, params CommandParameter[] parameters)
         {
-            using (var internalCmd = new InternalCommand(_unitofWork, _conFactory))
+            using (var internalCmd = new InternalCommand(_conFactory))
             {
                 foreach (var result in internalCmd.ExecMapperCommand(query, type, parameters))
                     yield return result;
@@ -68,26 +66,10 @@ namespace SqlMapper
         /// <returns>The aquired value after conversion.</returns>
         public TResult GetScalar<TResult>(string query, CommandType type, params CommandParameter[] parameters)
         {
-            using (var internalCmd = new InternalCommand(_unitofWork, _conFactory))
+            using (var internalCmd = new InternalCommand(_conFactory))
             {
                 return internalCmd.ExecScalarCommand<TResult>(query, type, parameters);
             }
-        }
-
-        /// <summary>
-        /// Save all changes in database.
-        /// </summary>
-        public void CommitChanges()
-        {
-            _unitofWork.Commit();
-        }
-
-        /// <summary>
-        /// Cancel all changes in database.
-        /// </summary>
-        public void RollbackChanges()
-        {
-            _unitofWork.Rollback();
         }
     }
 }
