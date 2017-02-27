@@ -31,8 +31,3 @@ Example:
 ```
 string value = ctx.GetScalar<string>("Query_Or_ProcName", Command_Type, Parameters_If_Any);
 ```
-
-
-
-##CommitChanges and RollbackChanges Methods
-By default the all **Create Update and Delete (CRUD)** operations are executed with a transaction. The transaction & it's connection isn't closed until one of these methods is call whether `CommitChanges` to save the changes or `RollbackChanges` to cancel them.

@@ -10,9 +10,10 @@ Repositories have more specific methods than [Context Level Methods](https://git
 **Note**: I'll use the `Users` repository we created [before](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/creating_repositories.md) in all future examples.
 
 ##Save Method
-Used to save data into database whether **Insert** or **Update**. 
+Used to save data into database whether **Insert** or **Update**. The `Save` method has 2 overloads.
 
 Example:
+You can use the first overload where you send the model.
 ```
 var ctx = new Context();
 
@@ -23,6 +24,12 @@ ctx.Users.Save("Query_Or_Proc", Command_Type, new User
     LastName = "",
     UserName = ""
 });
+```
+Or you can use the second overload where you send an array of parameters (This method is typically used with table valued parameters).
+```
+ctx.Users.Save("Query_Or_Proc", Command_Type, 
+                new CommandParameter("@Id", 15),
+                new CommandParameter("@Unique", ""));
 ```
 
 ##Delete Method
