@@ -81,5 +81,5 @@ This parameter is used to specify the property's value in a certain result set.
 Example:
 ```
 [Mapping(ResultSetIndex = 1)] //to indicate that this property value is in a specific result set
-public string UserName { get; set; }
+public List<LoginHistory> LoginHistory { get; set; }
 ```
