@@ -11,7 +11,7 @@ The context class has some general methods. Those methods are:
 The `GetData` method fetches data and returns row by row in the form of `CommandResult` class (Please see [The Command Result Class](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/command_result.md) for more clarification).
 
 Example:
-```
+```csharp
 var ctx = new Context();
 
 foreach (CommandResult row in ctx.GetData("Query_Or_StoredProcedureName", Command_Type, 
@@ -28,6 +28,6 @@ Note: the `GetData` function uses [yield return](https://msdn.microsoft.com/en-u
 The `GetScalar` method gets the first column from the first row and returns the value. This is a generic function which takes the type need to cast the value with before it's return.
 
 Example:
-```
+```csharp
 string value = ctx.GetScalar<string>("Query_Or_ProcName", Command_Type, Parameters_If_Any);
 ```
