@@ -5,7 +5,7 @@ SQLMapper is a relational mapper that maps retrieved data from a database to bus
 
 ###Install Package
 ```
-nuget install SqlMapper
+PM> Install-Package SqlMapper
 ```
 
 ##Get Started
