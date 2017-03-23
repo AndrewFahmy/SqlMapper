@@ -1,5 +1,5 @@
 
-#Creating a Context
+# Creating a Context
 
 A context is the main unit of the mapper it's job is to initialize the repositories specified inside it. You can create a context by inheriting from `ContextBase<ConnectionType>` class. The `ConnectionType` is any connection class that implements the abstract class `System.Data.Common.DbConnection`. In this example I'll use the `SqlConnection` class to connect to a SQL Server database
 
