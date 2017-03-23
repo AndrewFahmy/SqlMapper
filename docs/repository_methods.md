@@ -1,5 +1,5 @@
 
-#Repository Level Methods
+# Repository Level Methods
 Repositories have more specific methods than [Context Level Methods](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/context_methods.md). Those methods are:
 
 1. Save
@@ -14,7 +14,7 @@ Used to save data into database whether **Insert** or **Update**. The `Save` met
 
 Example:
 You can use the first overload where you send the model.
-```
+```csharp
 var ctx = new Context();
 
 ctx.Users.Save("Query_Or_Proc", Command_Type, new User
@@ -26,17 +26,17 @@ ctx.Users.Save("Query_Or_Proc", Command_Type, new User
 });
 ```
 Or you can use the second overload where you send an array of parameters (This method is typically used with table valued parameters).
-```
+```csharp
 ctx.Users.Save("Query_Or_Proc", Command_Type, 
                 new CommandParameter("@Id", 15),
                 new CommandParameter("@Unique", ""));
 ```
 
-##Delete Method
+## Delete Method
 This method is different from `Save` method since usually in delete statements you don't need to send all columns just the id. That's why this method doesn't require a model but takes an array of parameters.
 
 Example:
-```
+```csharp
 ctx.Users.Delete("Query_Or_Proc", Command_Type,
                 new CommandParameter("@Id", 15),
                 new CommandParameter("@Unique", ""));
@@ -45,20 +45,20 @@ ctx.Users.Delete("Query_Or_Proc", Command_Type,
 
 **Note**: Both `Save` and `Delete` methods return **boolean** value indicating whether the action was successful or not.
 
-##GetSingle Method
+## GetSingle Method
 This method returns only the first row from the first result set after mapping it to the provided model.
 
 Example:
-```
+```csharp
 var data = ctx.Users.GetSingle("Query_Or_ProcName", Command_Type,
                 new CommandParameter("Parameter_Name", Parameter_Value));
 ```
 
-##Search Method
+## Search Method
 This method is the same as `GetSingle` method but returns multiple rows after mapping them to a list of the provided model.
 
 Example:
-```
+```csharp
 var data = ctx.Users.Search("Query_Or_ProcName", Command_Type,
                 new CommandParameter("Parameter_Name", Parameter_Value));
 ```
