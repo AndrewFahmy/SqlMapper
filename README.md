@@ -1,16 +1,16 @@
 [![NuGet](https://img.shields.io/nuget/v/SqlMapper.svg)](https://www.nuget.org/packages/SqlMapper/)
 
-#About
+# About
 SQLMapper is a relational mapper that maps retrieved data from a database to business objects.
 
-###Install Package
+### Install Package
 ```
 PM> Install-Package SqlMapper
 ```
 
-##Get Started
+## Get Started
 * [Creating a Context](https://github.com/AndrewFahmy/SqlMapper/tree/master/docs/context.md)
-* [Adding Repositories] (https://github.com/AndrewFahmy/SqlMapper/tree/master/docs/creating_repositories.md)
+* [Adding Repositories](https://github.com/AndrewFahmy/SqlMapper/tree/master/docs/creating_repositories.md)
 * [Attributes](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/mapping_attribute.md)
 * [The Parameter Class](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/parameter.md)
 * [The Command Result Class](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/command_result.md)
