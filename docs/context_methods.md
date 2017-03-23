@@ -1,4 +1,4 @@
-#Context Level Methods
+# Context Level Methods
 
 The context class has some general methods. Those methods are:
  1. GetData
@@ -7,7 +7,7 @@ The context class has some general methods. Those methods are:
  4. RollbackChanges
 
 
-##GetData Method
+## GetData Method
 The `GetData` method fetches data and returns row by row in the form of `CommandResult` class (Please see [The Command Result Class](https://github.com/AndrewFahmy/SqlMapper/blob/master/docs/command_result.md) for more clarification).
 
 Example:
@@ -24,7 +24,7 @@ foreach (CommandResult row in ctx.GetData("Query_Or_StoredProcedureName", Comman
 Note: the `GetData` function uses [yield return](https://msdn.microsoft.com/en-us/library/9k7k7cf0.aspx) to increase performance, So the above example is the best practice for it's use.
 
 
-##GetScalar Method
+## GetScalar Method
 The `GetScalar` method gets the first column from the first row and returns the value. This is a generic function which takes the type need to cast the value with before it's return.
 
 Example:
