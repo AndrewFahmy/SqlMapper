@@ -71,5 +71,21 @@ namespace SqlMapper
                 return internalCmd.ExecScalarCommand<TResult>(query, type, parameters);
             }
         }
+        
+        
+        /// <summary>
+        /// Executes a sql query and returns true if one or more rows were altered.
+        /// </summary>
+        /// <param name="query">Query to execute.</param>
+        /// <param name="type">Type of command</param>
+        /// <param name="parameters">Parameters to be used with the query.</param>
+        /// <returns>Boolean</returns>
+        public bool Execute(string query, CommandType type, params CommandParameter[] parameters)
+        {
+            using (var internalCmd = new InternalCommand(_conFactory))
+            {
+                return internalCmd.ExecCommand(query, type, parameters);
+            }
+        }
     }
 }
