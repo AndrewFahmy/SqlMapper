@@ -3,8 +3,7 @@
 The context class has some general methods. Those methods are:
  1. GetData
  2. GetScalar
- 3. CommitChanges
- 4. RollbackChanges
+ 2. Execute
 
 
 ## GetData Method
@@ -30,4 +29,12 @@ The `GetScalar` method gets the first column from the first row and returns the 
 Example:
 ```csharp
 string value = ctx.GetScalar<string>("Query_Or_ProcName", Command_Type, Parameters_If_Any);
+```
+
+## Execute Method
+The `Execute` method just executes a query and returns true if one or more row were affected
+
+Example:
+```csharp
+bool result = ctx.Execute("Query_Or_ProcName", Command_Type, Parameters_If_Any);
 ```
