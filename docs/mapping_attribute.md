@@ -83,3 +83,12 @@ Example:
 [Mapping(ResultSetIndex = 1)] //to indicate that this property value is in a specific result set
 public List<LoginHistory> LoginHistory { get; set; }
 ```
+
+### OverridePropertyType Parameter
+Just as it's name suggests this property is used to override the property type with the specified type for an examle an Enum property can't be mapped so you can use this attribute propert instead.
+
+Example:
+```csharp
+[Mapping(OverridePropertyType = typeof(int))] //to specify another type is used for this property
+public ExampleEnum UserType { get; set; }
+```
