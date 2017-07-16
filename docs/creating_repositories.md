@@ -1,10 +1,10 @@
 
-#Adding Repositories
+# Adding Repositories
 
 Usually a repository represent a table structure from the database. To create a repository first we need to create it's [Plain Old CLR Object (POCO)](https://en.wikipedia.org/wiki/Plain_old_CLR_object) class. In the example below I'll use a simple user structure to clarify.
 
 Example:
-```
+```csharp
 public class User
 {
     public int? Id { get; set; }
@@ -20,7 +20,7 @@ public class User
 ```
 
 and the `LoginHistory` class declaration is
-```
+```csharp
 public class LoginHistory
 {
     public string BrowserInfo { get; set; }
@@ -31,7 +31,7 @@ public class LoginHistory
 
 To declare this `User` class in our context class.
 
-```
+```csharp
 public class Context : ContextBase<SqlConnection>
 {
     public Context(string connectionString) : base(connectionString)
