@@ -71,7 +71,7 @@ namespace SqlMapper.Extensions
                     PropertyName = p.Name,
                     ResultSetIndex = attrib?.ResultSetIndex ?? -1,
                     ColumnName = attrib?.ColumnName ?? p.Name,
-                    UnderlyingType = actualType,
+                    UnderlyingType = attrib?.OverridePropertyType ?? actualType,
                     UnderlyingTypeInfo = typeInfo,
                     ParameterName =
                         $"@{(attrib?.ParameterName ?? p.Name).Replace("@", string.Empty)}",

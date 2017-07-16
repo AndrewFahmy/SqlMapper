@@ -38,5 +38,11 @@ namespace SqlMapper.Common
         /// This is a zero based index.
         /// </summary>
         public int ResultSetIndex { get; set; } = -1;
+
+
+        /// <summary>
+        /// Uses this property value in mapping instead of the property type.
+        /// </summary>
+        public Type OverridePropertyType { get; set; } = null;
     }
 }
