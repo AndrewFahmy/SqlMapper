@@ -1,4 +1,5 @@
 [![NuGet](https://img.shields.io/nuget/v/SqlMapper.svg)](https://www.nuget.org/packages/SqlMapper/)
+[![OpenHub](https://www.openhub.net/p/SQL-Mapper/widgets/project_thin_badge)](https://www.openhub.net/p/SQL-Mapper)
 
 # About
 SQLMapper is a relational mapper that maps retrieved data from a database to business objects.
