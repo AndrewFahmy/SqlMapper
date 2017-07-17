@@ -1,3 +1,6 @@
 language: csharp
 solution: SqlMapper.sln
-mono: latest
+install:
+- travis_retry nuget restore -source "https://www.nuget.org/api/v2" SqlMapper.sln
+script:
+- xbuild SqlMapper.sln
