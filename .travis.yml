@@ -1,6 +1,9 @@
 language: csharp
-solution: SqlMapper.sln
+solution: ExcelHelper.sln
+mono: none
+dotnet: 1.0.1
+dist: trusty
 install:
-- travis_retry nuget restore -source "https://www.nuget.org/api/v2" SqlMapper.sln
+  - nuget restore ExcelHelper.sln
 script:
-- xbuild SqlMapper.sln
+  - dotnet restore
