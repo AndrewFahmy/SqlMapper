@@ -1,5 +1,6 @@
 [![NuGet](https://img.shields.io/nuget/v/SqlMapper.svg)](https://www.nuget.org/packages/SqlMapper/)
 [![Build Status](https://travis-ci.org/AndrewFahmy/SqlMapper.svg?branch=master)](https://travis-ci.org/AndrewFahmy/SqlMapper)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 [![OpenHub](https://www.openhub.net/p/SQL-Mapper/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/SQL-Mapper)
 
 # About
