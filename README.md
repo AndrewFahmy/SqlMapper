@@ -4,7 +4,7 @@
 [![OpenHub](https://www.openhub.net/p/SQL-Mapper/widgets/project_thin_badge?format=gif)](https://www.openhub.net/p/SQL-Mapper)
 
 # About
-SQLMapper is a relational mapper that maps retrieved data from a database to business objects.
+SQLMapper is an open source ORM.
 
 ### Install Package
 ```
