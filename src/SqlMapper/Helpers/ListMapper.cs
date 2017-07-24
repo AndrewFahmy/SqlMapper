@@ -86,6 +86,8 @@ namespace SqlMapper.Helpers
 
             ClassMapper.Instance.MapForList(classInstance, data, classPropertyData, entryPoint);
 
+            if (!entryPoint.AddToItems) return;
+
             var listProperty = model.GetType().GetTypeInfo().GetProperty(propData.PropertyName);
 
             if (listProperty != null)
