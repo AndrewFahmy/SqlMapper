@@ -26,35 +26,37 @@ namespace SqlMapper.Helpers
         {
             if (data.ResultSetIndex != propData.ResultSetIndex) return;
 
-            var keyIndex = CheckGroupKey(data, propData, entryPoint);
+            var instance = CheckGroupKey(model, data, propData, entryPoint);
 
-            if (keyIndex > -1)
+            if (instance != null)
             {
-                AddDataToExistingRecord(keyIndex, data, propData, entryPoint);
+                AddDataToExistingRecord(instance, data, propData, entryPoint);
                 entryPoint.AddToItems = false;
+                // ReSharper disable once RedundantAssignment
+                model = (T)instance;
             }
             else AddDataToNewRecord(model, data, propData, entryPoint);
         }
 
-        private static int CheckGroupKey<T>(CommandResult data, Property propData, IMapperMain<T> entryPoint)
+        private static object CheckGroupKey<T, TMapper>(T model, CommandResult data, Property propData, IMapperMain<TMapper> entryPoint)
         {
             var propName = propData.GroupingProperty?.ColumnName ?? propData.PrimaryKeyProperty?.ColumnName;
 
-            if (string.IsNullOrWhiteSpace(propName)) return -1; //No Groupping or Primary Key property was found
+            if (string.IsNullOrWhiteSpace(propName)) return null; //No Groupping or Primary Key property was found
 
             var val = data.Columns[propName];
 
             foreach (var prop in entryPoint.Groups)
-                if (prop.Name == propName && prop.Value.Equals(val)) return prop.Index;
+                if (prop.Name == propName && prop.Value.Equals(val)) return prop.Instance;
 
             entryPoint.Groups.Add(new GrouppingProperties
             {
                 Name = propName,
                 Value = val,
-                Index = entryPoint.ItemsList.Count
+                Instance = model
             });
 
-            return -1;
+            return null;
         }
 
         private static void AddDataToNewRecord<T, TMapper>(T model, CommandResult data, Property propData, IMapperMain<TMapper> entryPoint)
@@ -69,25 +71,25 @@ namespace SqlMapper.Helpers
 
             ClassMapper.Instance.MapForList(classInstance, data, classPropertyData, entryPoint);
 
-            returnList.Add(classInstance);
+            if (entryPoint.AddToItems)
+                returnList.Add(classInstance);
 
-            propData.PropertyInfo.SetValue(model, returnList, null);
+            propData.PropertyInfo.SetMethod.Invoke(model, new object[] { returnList });
         }
 
-        private static void AddDataToExistingRecord<TMapper>(int index, CommandResult data, Property propData, IMapperMain<TMapper> entryPoint)
+        private static void AddDataToExistingRecord<T, TMapper>(T model, CommandResult data, Property propData, IMapperMain<TMapper> entryPoint)
         {
             var underlyingType = propData.UnderlyingTypeInfo.GetGenericArguments()[0];
 
             var classInstance = Activator.CreateInstance(underlyingType);
-            var classPropertyData = new Property { UnderlyingType = underlyingType, ResultSetIndex = propData.ResultSetIndex};
+            var classPropertyData = new Property { UnderlyingType = underlyingType, ResultSetIndex = propData.ResultSetIndex };
 
             ClassMapper.Instance.MapForList(classInstance, data, classPropertyData, entryPoint);
 
-            var record = entryPoint.ItemsList[index];
+            var listProperty = model.GetType().GetTypeInfo().GetProperty(propData.PropertyName);
 
-            var listProperty = record.GetType().GetTypeInfo().GetProperty(propData.PropertyName);
-
-            propData.UnderlyingTypeInfo.GetMethod("Add").Invoke(listProperty.GetValue(record, null), new[] { classInstance });
+            if (listProperty != null)
+                propData.UnderlyingTypeInfo.GetMethod("Add").Invoke(listProperty.GetValue(model, null), new[] { classInstance });
         }
     }
 }

@@ -14,6 +14,7 @@ namespace SqlMapper.Tests.Mocks
 
         private ConnectionState _state;
 
+        // ReSharper disable once OptionalParameterHierarchyMismatch
         protected override DbTransaction BeginDbTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
             return new TransactionMock(this, isolationLevel);

@@ -3,7 +3,9 @@ using SqlMapper.Common;
 
 namespace SqlMapper.Tests.Models
 {
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     public class SingleResultSetModel
+#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
         [Mapping(ColumnName = "Col1")]
         public int FirstCol { get; set; }
@@ -15,13 +17,15 @@ namespace SqlMapper.Tests.Models
         public DateTime ThirdCol { get; set; }
 
 
+#pragma warning disable 659
         public override bool Equals(object obj)
+#pragma warning restore 659
         {
-            var Obj = obj as SingleResultSetModel;
+            var instance = obj as SingleResultSetModel;
 
-            return FirstCol == Obj?.FirstCol
-                   && SecondCol == Obj?.SecondCol
-                   && ThirdCol == Obj?.ThirdCol;
+            return FirstCol == instance?.FirstCol
+                   && SecondCol == instance.SecondCol
+                   && ThirdCol == instance.ThirdCol;
         }
     }
 }

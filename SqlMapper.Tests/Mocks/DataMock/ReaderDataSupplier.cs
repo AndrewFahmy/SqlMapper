@@ -254,5 +254,73 @@ namespace SqlMapper.Tests.Mocks.DataMock
                 }
             };
         }
+
+        public ResultSetModel GetMultiLayerData()
+        {
+            return new ResultSetModel
+            {
+                Columns = new List<string>
+                {
+                    "ParentCol1",
+                    "ParentCol2",
+                    "ParentCol3",
+                    "Col1",
+                    "Col2",
+                    "Col3"
+                },
+                Index = 0,
+                Rows = new List<RowModel>
+                {
+                    new RowModel
+                    {
+                        ColumnValues = new List<object>
+                        {
+                            1,
+                            "test parent 1",
+                            DateTime.Today,
+                            1,
+                            "test 1",
+                            DateTime.Today
+                        }
+                    },
+                    new RowModel
+                    {
+                        ColumnValues = new List<object>
+                        {
+                            1,
+                            "test parent 1",
+                            DateTime.Today,
+                            2,
+                            "test 2",
+                            DateTime.Today
+                        }
+                    },
+                    new RowModel
+                    {
+                        ColumnValues = new List<object>
+                        {
+                            2,
+                            "test parent 2",
+                            DateTime.Today,
+                            3,
+                            "test 3",
+                            DateTime.Today
+                        }
+                    },
+                    new RowModel
+                    {
+                        ColumnValues = new List<object>
+                        {
+                            2,
+                            "test parent 2",
+                            DateTime.Today,
+                            4,
+                            "test 4",
+                            DateTime.Today
+                        }
+                    }
+                }
+            };
+        }
     }
 }

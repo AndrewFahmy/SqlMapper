@@ -9,7 +9,7 @@ namespace SqlMapper.Tests.Mocks
 {
     public class ReaderMock : DbDataReader
     {
-        private int _currentResultSetIndex = 0;
+        private int _currentResultSetIndex;
         private int _currentindex = -1;
         private List<ResultSetModel> _dataToReturn;
         private ReaderDataSupplier _supplier;
@@ -44,53 +44,57 @@ namespace SqlMapper.Tests.Mocks
                 case "test query 3":
                     _dataToReturn.Add(_supplier.GetSingleResultSetGroupped());
                     break;
+
+                case "test query 3 multi":
+                    _dataToReturn.Add(_supplier.GetMultiLayerData());
+                    break;
             }
         }
 
 
         public override bool GetBoolean(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override byte GetByte(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override long GetBytes(int ordinal, long dataOffset, byte[] buffer, int bufferOffset, int length)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override char GetChar(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override long GetChars(int ordinal, long dataOffset, char[] buffer, int bufferOffset, int length)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override string GetDataTypeName(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override DateTime GetDateTime(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override decimal GetDecimal(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override double GetDouble(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override IEnumerator GetEnumerator()
@@ -144,59 +148,59 @@ namespace SqlMapper.Tests.Mocks
 
         public override bool IsDBNull(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override int GetValues(object[] values)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override object GetValue(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override string GetString(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override int GetOrdinal(string name)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override string GetName(int ordinal) => _dataToReturn[_currentResultSetIndex].Columns[ordinal];
 
         public override long GetInt64(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override int GetInt32(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override short GetInt16(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override Guid GetGuid(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override float GetFloat(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override Type GetFieldType(int ordinal)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

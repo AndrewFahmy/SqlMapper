@@ -73,5 +73,18 @@ namespace SqlMapper.Tests
             //assert
             Assert.AreEqual(mappedData, validData);
         }
+
+        [TestMethod]
+        public void MultiLayerTest()
+        {
+            //assign
+            var validData = TestDataSupplier.GetMultiLayerData();
+
+            //arrange
+            var mappedData = _ctx.MultiLayerModel.GetSingle("test query 3 multi", CommandType.Text);
+
+            //assert
+            Assert.AreEqual(mappedData, validData);
+        }
     }
 }

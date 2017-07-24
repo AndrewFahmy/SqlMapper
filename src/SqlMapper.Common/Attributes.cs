@@ -24,7 +24,7 @@ namespace SqlMapper.Common
         public string ParameterName { get; set; }
 
         /// <summary>
-        /// Group data by the specified property name.
+        /// Group data by the specified column name.
         /// </summary>
         public string GroupBy { get; set; }
 

@@ -18,5 +18,7 @@ namespace SqlMapper.Tests
         public IRepository<MultiResultViewModel2> MultiResultSetMapping2 { get; set; }
 
         public IRepository<SingleResultSetWithGroupModel> SingleResultSetWithGroupModel { get; set; }
+
+        public IRepository<MultiLayerViewModel> MultiLayerModel { get; set; }
     }
 }

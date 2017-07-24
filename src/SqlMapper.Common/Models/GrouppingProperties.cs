@@ -6,6 +6,6 @@
 
         public object Value { get; set; }
 
-        public int Index { get; set; }
+        public object Instance { get; set; }
     }
 }

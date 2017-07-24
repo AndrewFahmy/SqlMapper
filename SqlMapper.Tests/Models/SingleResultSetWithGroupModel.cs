@@ -4,7 +4,9 @@ using SqlMapper.Common;
 
 namespace SqlMapper.Tests.Models
 {
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     public class SingleResultSetWithGroupModel
+#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
         [PrimaryKey]
         [Mapping(ColumnName = "ParentCol1")]
@@ -20,18 +22,20 @@ namespace SqlMapper.Tests.Models
         public List<SingleResultSetModel> GrouppedData { get; set; }
 
 
+#pragma warning disable 659
         public override bool Equals(object obj)
+#pragma warning restore 659
         {
-            var Obj = obj as SingleResultSetWithGroupModel;
+            var instance = obj as SingleResultSetWithGroupModel;
 
-            var result = true;
+            bool result;
 
-            result = result && FirstCol == Obj?.FirstCol
-                            && SecondCol == Obj?.SecondCol
-                            && ThirdCol == Obj?.ThirdCol;
+            result = FirstCol == instance?.FirstCol
+                            && SecondCol == instance.SecondCol
+                            && ThirdCol == instance.ThirdCol;
 
             for (var i = 0; i < GrouppedData.Count; i++)
-                result = result && GrouppedData[i].Equals(Obj?.GrouppedData[i]);
+                result = result && GrouppedData[i].Equals(instance.GrouppedData[i]);
 
             //for (var j = 0; j < GrouppedData2.Count; j++)
             //    result = result && GrouppedData2[j].Equals(Obj?.GrouppedData2[j]);

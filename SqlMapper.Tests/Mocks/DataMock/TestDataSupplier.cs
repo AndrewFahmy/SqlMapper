@@ -239,5 +239,58 @@ namespace SqlMapper.Tests.Mocks.DataMock
                 }
             };
         }
+
+        public static MultiLayerViewModel GetMultiLayerData()
+        {
+            return new MultiLayerViewModel
+            {
+
+                SingleResultSetWithGroupModels = new List<SingleResultSetWithGroupModel>
+                {
+                    new SingleResultSetWithGroupModel
+                    {
+                        FirstCol = 1,
+                        SecondCol = "test parent 1",
+                        ThirdCol = DateTime.Today,
+                        GrouppedData = new List<SingleResultSetModel>
+                        {
+                            new SingleResultSetModel
+                            {
+                                FirstCol = 1,
+                                SecondCol = "test 1",
+                                ThirdCol = DateTime.Today
+                            },
+                            new SingleResultSetModel
+                            {
+                                FirstCol = 2,
+                                SecondCol = "test 2",
+                                ThirdCol = DateTime.Today
+                            }
+                        }
+                    },
+                    new SingleResultSetWithGroupModel
+                    {
+                        FirstCol = 2,
+                        SecondCol = "test parent 2",
+                        ThirdCol = DateTime.Today,
+                        GrouppedData = new List<SingleResultSetModel>
+                        {
+                            new SingleResultSetModel
+                            {
+                                FirstCol = 3,
+                                SecondCol = "test 3",
+                                ThirdCol = DateTime.Today
+                            },
+                            new SingleResultSetModel
+                            {
+                                FirstCol = 4,
+                                SecondCol = "test 4",
+                                ThirdCol = DateTime.Today
+                            }
+                        }
+                    }
+                }
+            };
+        }
     }
 }
