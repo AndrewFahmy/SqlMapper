@@ -49,11 +49,11 @@ public string UserName { get; set; }
 ```
 
 ### GroupBy Parameter
-This paramter is to override the `PrimaryKey` attribute and group duplicated row using a different property.
+This paramter is to override the `PrimaryKey` attribute and group duplicated row using a column name.
 
 Example:
 ```csharp
-[Mapping(GroupBy = "FirstName")] //Groupping duplicate rows by the property you specify instead on primary key property
+[Mapping(GroupBy = "FirstName")] //Groupping duplicate rows by the column name which overrides the primary key attribute
 public string UserName { get; set; }
 ```
 
