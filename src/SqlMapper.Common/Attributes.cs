@@ -37,7 +37,7 @@ namespace SqlMapper.Common
         /// Maps this property from data in another result set.
         /// This is a zero based index.
         /// </summary>
-        public int ResultSetIndex { get; set; } = -1;
+        public int ResultSetIndex { get; set; } = 0;
 
 
         /// <summary>
