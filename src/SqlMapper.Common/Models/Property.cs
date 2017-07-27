@@ -8,6 +8,8 @@ namespace SqlMapper.Common.Models
     {
         public int ResultSetIndex { get; set; }
 
+        public int OriginalResultSetIndex { get; set; }
+
         public string PropertyName { get; set; }
 
         public string ColumnName { get; set; }

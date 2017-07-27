@@ -36,7 +36,7 @@ namespace SqlMapper.Extensions
 
             filteredProperties.ForEach(p =>
             {
-                p.ResultSetIndex = parentData?.ResultSetIndex ?? p.ResultSetIndex;
+                p.ResultSetIndex = parentData?.ResultSetIndex ?? p.OriginalResultSetIndex;
             });
 
             return filteredProperties;
@@ -69,7 +69,7 @@ namespace SqlMapper.Extensions
                     AttributeData = attrib,
                     PropertyInfo = p,
                     PropertyName = p.Name,
-                    ResultSetIndex = attrib?.ResultSetIndex ?? 0,
+                    OriginalResultSetIndex = attrib?.ResultSetIndex ?? 0,
                     ColumnName = attrib?.ColumnName ?? p.Name,
                     UnderlyingType = attrib?.OverridePropertyType ?? actualType,
                     UnderlyingTypeInfo = typeInfo,
